@@ -19,7 +19,6 @@ args = parser.parse_args()
 url = "https://api.openai.com/v1/audio/transcriptions"
 headers = {
     "Authorization": f"Bearer {OPENAI_API_KEY}",
-    "Content-Type": "multipart/form-data",
 }
 
 # Prepare file and data for API call
@@ -32,6 +31,6 @@ with open(args.file, "rb") as f:
 
 # Check for errors and print output
 if response.status_code == 200:
-    print(response.json()["transcription"])
+    print(response.json()["text"])
 else:
     print(f"Error {response.status_code}: {response.text}")
